@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Prediksi{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold text-primary">Prediksi Attrition Karyawan</h2>
+    <p class="text-secondary">Isi data karyawan di bawah untuk memprediksi kemungkinan terjadinya attrition menggunakan model machine learning.</p>
+  </div>
+
+  <div class="card p-4">
+    <form method="POST" action="/predict">
+      <div class="row g-3">
+        <!-- OverTime -->
+        <div class="col-md-6">
+          <label class="form-label">OverTime</label>
+          <select class="form-select" name="OverTime" required>
+            <option value="No" {% if form and form['OverTime']=='No' %}selected{% endif %}>No</option>
+            <option value="Yes" {% if form and form['OverTime']=='Yes' %}selected{% endif %}>Yes</option>
+          </select>
+        </div>
+
+        <!-- StockOptionLevel -->
+        <div class="col-md-6">
+          <label class="form-label">Stock Option Level (0–3)</label>
+          <input type="number" class="form-control" name="StockOptionLevel" min="0" max="3" value="{{ form['StockOptionLevel'] if form else '' }}" required>
+        </div>
+
+        <!-- JobLevel -->
+        <div class="col-md-6">
+          <label class="form-label">Job Level (1–5)</label>
+          <input type="number" class="form-control" name="JobLevel" min="1" max="5" value="{{ form['JobLevel'] if form else '' }}" required>
+        </div>
+
+        <!-- EnvironmentSatisfaction -->
+        <div class="col-md-6">
+          <label class="form-label">Environment Satisfaction (1–4)</label>
+          <input type="number" class="form-control" name="EnvironmentSatisfaction" min="1" max="4" value="{{ form['EnvironmentSatisfaction'] if form else '' }}" required>
+        </div>
+
+        <!-- JobInvolvement -->
+        <div class="col-md-6">
+          <label class="form-label">Job Involvement (1–4)</label>
+          <input type="number" class="form-control" name="JobInvolvement" min="1" max="4" value="{{ form['JobInvolvement'] if form else '' }}" required>
+        </div>
+
+        <!-- MaritalStatus -->
+        <div class="col-md-6">
+          <label class="form-label">Marital Status</label>
+          <select class="form-select" name="MaritalStatus" required>
+            <option value="Single" {% if form and form['MaritalStatus']=='Single' %}selected{% endif %}>Single</option>
+            <option value="Married" {% if form and form['MaritalStatus']=='Married' %}selected{% endif %}>Married</option>
+            <option value="Divorced" {% if form and form['MaritalStatus']=='Divorced' %}selected{% endif %}>Divorced</option>
+          </select>
+        </div>
+
+        <!-- JobSatisfaction -->
+        <div class="col-md-6">
+          <label class="form-label">Job Satisfaction (1–4)</label>
+          <input type="number" class="form-control" name="JobSatisfaction" min="1" max="4" value="{{ form['JobSatisfaction'] if form else '' }}" required>
+        </div>
+
+        <!-- JobRole -->
+        <div class="col-md-6">
+          <label class="form-label">Job Role</label>
+          <select class="form-select" name="JobRole" required>
+            <option value="Manufacturing Director" {% if form and form['JobRole']=='Manufacturing Director' %}selected{% endif %}>Manufacturing Director</option>
+            <option value="Sales Executive" {% if form and form['JobRole']=='Sales Executive' %}selected{% endif %}>Sales Executive</option>
+            <option value="Healthcare Representative" {% if form and form['JobRole']=='Healthcare Representative' %}selected{% endif %}>Healthcare Representative</option>
+            <option value="Human Resources" {% if form and form['JobRole']=='Human Resources' %}selected{% endif %}>Human Resources</option>
+            <option value="Laboratory Technician" {% if form and form['JobRole']=='Laboratory Technician' %}selected{% endif %}>Laboratory Technician</option>
+            <option value="Manager" {% if form and form['JobRole']=='Manager' %}selected{% endif %}>Manager</option>
+            <option value="Research Director" {% if form and form['JobRole']=='Research Director' %}selected{% endif %}>Research Director</option>
+            <option value="Research Scientist" {% if form and form['JobRole']=='Research Scientist' %}selected{% endif %}>Research Scientist</option>
+            <option value="Sales Representative" {% if form and form['JobRole']=='Sales Representative' %}selected{% endif %}>Sales Representative</option>
+          </select>
+        </div>
+
+        <!-- BusinessTravel -->
+        <div class="col-md-6">
+          <label class="form-label">Business Travel</label>
+          <select class="form-select" name="BusinessTravel" required>
+            <option value="Travel_Frequently" {% if form and form['BusinessTravel']=='Travel_Frequently' %}selected{% endif %}>Travel Frequently</option>
+            <option value="Travel_Rarely" {% if form and form['BusinessTravel']=='Travel_Rarely' %}selected{% endif %}>Travel Rarely</option>
+            <option value="Non-Travel" {% if form and form['BusinessTravel']=='Non-Travel' %}selected{% endif %}>Non-Travel</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 fw-semibold mt-4">Prediksi</button>
+
+      {% if result %}
+      <div class="alert alert-info mt-4 text-center shadow-sm">
+        <strong>Hasil Prediksi:</strong> {{ result }}
+      </div>
+      {% endif %}
+
+      {% if prob %}
+      <div class="alert alert-secondary mt-2 text-center shadow-sm">
+        Probabilitas Attrition Yes: <strong>{{ prob }}%</strong>
+      </div>
+      {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}

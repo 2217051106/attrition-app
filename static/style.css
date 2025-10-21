@@ -41,3 +41,133 @@ body {
 .home-box {
     max-width: 700px;
 }
+
+/* === GLOBAL STYLE === */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  margin: 0;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+  height: 100vh;
+  width: 250px;
+  background-color: #1b2a4e;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.sidebar h3 {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.nav-link {
+  color: #cfd8e3;
+  font-weight: 500;
+  margin: 0.2rem 0;
+  transition: all 0.2s;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background-color: #243b6b;
+  color: #fff;
+}
+
+/* === MAIN CONTENT === */
+.content {
+  margin-left: 250px;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* === CARD STYLE === */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+}
+
+/* === BUTTONS === */
+.btn-primary {
+  background-color: #1b2a4e;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #243b6b;
+}
+
+/* === TEXT COLORS === */
+.text-primary {
+  color: #1b2a4e !important;
+}
+
+/* === ALERT STYLE === */
+.alert {
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem 1rem;
+  }
+
+  .sidebar h3 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .nav {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .content {
+    margin-left: 0;
+    padding-top: 1rem;
+  }
+}
+
+/* === MENU CARD INTERAKTIF === */
+.menu-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.menu-card h4,
+.menu-card p {
+  color: #212529;
+}
+
+a.text-decoration-none:hover .menu-card h4 {
+  color: #1b2a4e;
+}
+
+

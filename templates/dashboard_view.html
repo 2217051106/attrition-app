@@ -1,12 +1,19 @@
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<div class="dashboard-container">
+<div class="container">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold text-primary">Dashboard Analisis Attrition</h2>
+    <p class="text-secondary">Dashboard ini menampilkan hasil analisis data karyawan berdasarkan faktor-faktor yang memengaruhi tingkat attrition menggunakan Google Looker Studio.</p>
+  </div>
+  <div class="card p-3">
     <iframe 
-        src="https://lookerstudio.google.com/embed/reporting/11faebb0-80ce-4cb9-a836-3a2c5d8ca94e/page/FMFZF" 
-        class="full-iframe"
-        allowfullscreen
-        sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+      src="https://lookerstudio.google.com/embed/reporting/11faebb0-80ce-4cb9-a836-3a2c5d8ca94e/page/FMFZF" 
+      class="w-100" 
+      style="height: 80vh; border: none; border-radius: 8px;"
+      allowfullscreen
+      sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
     </iframe>
+  </div>
 </div>
 {% endblock %}

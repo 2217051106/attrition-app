@@ -1,10 +1,41 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<div class="d-flex justify-content-center align-items-center" style="height:80vh;">
-  <div class="p-5 rounded bg-warning text-center home-box">
-    <h1 class="fw-bold text-dark">Selamat Datang di <br> Dashboard Analisi Attrition</h1>
-    <h2 class="text-dark">Data Science Project</h2>
+<div class="container">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-primary">Sistem Prediksi Attrition</h1>
+    <p class="lead text-secondary">
+      Membantu perusahaan menganalisis faktor-faktor yang memengaruhi keputusan karyawan untuk keluar,
+      serta memprediksi potensi attrition dengan model machine learning.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <!-- Dashboard Card -->
+    <div class="col-md-6">
+      <a href="/dashboard" class="text-decoration-none">
+        <div class="card p-4 text-center menu-card h-100">
+          <i class="bi bi-bar-chart fs-1 text-primary mb-3"></i>
+          <h4 class="fw-semibold text-dark">Dashboard Analisis</h4>
+          <p class="text-muted">
+            Lihat hasil analisis data karyawan dalam visualisasi interaktif menggunakan Google Looker Studio.
+          </p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Prediction Card -->
+    <div class="col-md-6">
+      <a href="/predict" class="text-decoration-none">
+        <div class="card p-4 text-center menu-card h-100">
+          <i class="bi bi-cpu fs-1 text-primary mb-3"></i>
+          <h4 class="fw-semibold text-dark">Form Prediksi</h4>
+          <p class="text-muted">
+            Masukkan data karyawan untuk mendapatkan hasil prediksi kemungkinan terjadinya attrition.
+          </p>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 {% endblock %}
